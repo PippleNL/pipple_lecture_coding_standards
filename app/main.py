@@ -36,6 +36,18 @@ def reddit():
         raise HTTPException(status_code=500)
 
 
+@app.get('/reddit_cat_count', response_model=NewsCount)
+def reddit_news_count(request: Request):
+    # TODO : Add description
+    """
+    :return: number of categories in Reddit list
+    """
+    logger.info(f'START : Return number of categories within Reddit')
+
+    url = f'http://{request.client.host}:8000/reddit'
+    # TODO : Get the number pi from url given in notebook and return pi as float with 5 digits
+
+
 @app.get('/pi_generator', response_model=PiDec)
 def pi_generator_default():
     # TODO : Add description
@@ -55,18 +67,6 @@ def pi_generator(digits: int):
     try:
         # TODO : Get the number pi from url given in notebook and return pi as float with 5 digits
     # TODO : Raise Exception
-
-
-@app.get('/reddit_cat_count', response_model=NewsCount)
-def reddit_news_count(request: Request):
-    # TODO : Add description
-    """
-    :return: number of categories in Reddit list
-    """
-    logger.info(f'START : Return number of categories within Reddit')
-
-    url = f'http://{request.client.host}:8000/reddit'
-    # TODO : Get the number pi from url given in notebook and return pi as float with 5 digits
 
 
 @app.get('/area', response_model=AreaCircle)
